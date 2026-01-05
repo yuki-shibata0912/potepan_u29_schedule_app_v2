@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Schedule App V2" %></title>
+    <title><%= content_for(:title) || "Schedule App" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -17,7 +17,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+ <body>
+  <% flash.each do |key, message| %>
+    <p style="color: <%= key == "notice" ? "green" : "red" %>;">
+      <%= message %>
+    </p>
+  <% end %>
+ 
+  <%= yield %>
+
+</body>
 </html>
