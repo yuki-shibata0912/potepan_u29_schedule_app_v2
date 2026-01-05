@@ -1,6 +1,6 @@
 class SchedulesController < ApplicationController
    def index
-    @schedules = Schedule.order(:start_at)
+    @schedules = Schedule.order(start_at: :asc, end_at: :asc)
     @schedule = Schedule.new
   end
 
@@ -17,7 +17,7 @@ class SchedulesController < ApplicationController
     if @schedule.save
       redirect_to schedules_path, notice: "予定を作成しました"
     else
-      @schedules = Schedule.all
+      @schedules = Schedule.order(start_at: :asc, end_at: :asc)
       flash.now[:alert] = "入力内容に誤りがあります"
       render :index, status: :unprocessable_entity
     end
@@ -32,6 +32,7 @@ class SchedulesController < ApplicationController
     if @schedule.update(schedule_params)
       redirect_to schedules_path, notice: "予定を更新しました"
     else
+      @schedules = Schedule.order(start_at: :asc, end_at: :asc)
       flash.now[:alert] = "入力内容に誤りがあります" 
       render :edit, status: :unprocessable_entity
     end

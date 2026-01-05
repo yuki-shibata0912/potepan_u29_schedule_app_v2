@@ -41,8 +41,9 @@
       ID:<%= schedule.id %><br>
       タイトル: <%= schedule.title %><br>
       開始日：<%= schedule.start_at&.to_date&.strftime("%Y/%m/%d")  %><br>
-      終了日：<%= schedule.end_at&.to_date&.strftime("%Y/%m/%d")  %><br>
-     
+      終了日:
+      <%= schedule.end_at.present? ? schedule.end_at.strftime("%Y/%m/%d") : "" %><br>
+      終日: <%= schedule.all_day ? "◯" : "" %><br>
       メモ: <%= schedule.memo %><br>
 
       更新日時:
