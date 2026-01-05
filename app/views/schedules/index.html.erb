@@ -1,0 +1,69 @@
+<%= link_to "+ 予定を追加", new_schedule_path %>
+<h1>予定一覧</h1>
+<div class="form-area">
+  <%= form_with model: Schedule.new,
+                  url: schedules_path,
+                  method: :post,
+                  deta: true do |f| %>
+
+    <div>
+      <%= f.label :title, "タイトル" %><br>
+      <%= f.text_field :title %>
+    </div>
+    
+    <div>
+      <%= f.label :start_at, "開始日" %><br>
+      <%= f.date_field :start_at %>
+    </div>
+
+    <div>
+      <%= f.label :end_at, "終了日" %><br>
+      <%= f.date_field :end_at %>
+    </div>
+
+    <div>
+      <%= f.label :memo, "メモ" %><br>
+      <%= f.text_area :memo %>
+    </div>
+
+    <div>
+    <%= f.check_box :all_day %>
+    <%=f.label :all_day, "終日の場合はチェックを入れます" %>
+
+    <%= f.submit "作成" %>
+  <% end %>
+</div>
+
+  <hr>
+
+  <% @schedules.each do |schedule| %>
+    <div class="schedule">
+      ID:<%= schedule.id %><br>
+      タイトル: <%= schedule.title %><br>
+      開始日：<%= schedule.start_at&.to_date&.strftime("%Y/%m/%d")  %><br>
+      終了日：<%= schedule.end_at&.to_date&.strftime("%Y/%m/%d")  %><br>
+     
+      メモ: <%= schedule.memo %><br>
+
+      更新日時:
+      <%= schedule.updated_at
+            .in_time_zone("Tokyo")
+            .strftime("%Y/%m/%d %H:%M") %><br>
+
+      <div class="schedule-actions">
+      <%= link_to "詳細",schedule_path(schedule) %>
+      <%= link_to "編集", edit_schedule_path(schedule) %>
+      <%= button_to "削除",
+      schedule_path(schedule),
+      method: :delete,
+      class: "delete-button",
+      form: {
+      onsubmit: "return confirm('本当に削除しますか？');",
+      style: "display:inline"
+      } %>
+     </div>
+    </div>
+  <% end %>
+
+  <p>予定合計 <%= @schedules.count %> 件</p>
+  <p>本日の日付 <%= Date.current.strftime("%Y/%m/%d") %></p>
