@@ -1,0 +1,34 @@
+<h1>予定を追加</h1>
+
+<%= form_with model: @schedule do |f| %>
+  <div>
+    <%= f.label :title, "タイトル" %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :start_at, "開始日" %><br>
+    <%= f.date_field :start_at %>
+  </div>
+
+  <div>
+    <%= f.label :end_at, "終了日" %><br>
+    <%= f.date_field :end_at %>
+  </div>
+
+  <div>
+  <%= f.check_box :all_day %>
+  <%= f.label :all_day, "終日の場合はチェックを入れます" %>
+  </div>
+
+  <div>
+    <%= f.label :memo, "メモ" %><br>
+    <%= f.text_area :memo %>
+  </div>
+
+  <div>
+    <%= f.submit "作成" %>
+  </div>
+<% end %>
+
+<%= link_to "一覧に戻る", schedules_path %>

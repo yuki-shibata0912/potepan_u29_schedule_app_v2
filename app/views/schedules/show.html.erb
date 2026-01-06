@@ -1,0 +1,25 @@
+<h1>予定詳細</h1>
+
+<p>タイトル：<%= @schedule.title %></p>
+
+<p>開始日：
+  <% if @schedule.start_at.present? %>
+  <%= @schedule.start_at.strftime("%Y/%m/%d") %>
+  <% end %>
+</p>
+
+<p>終了日：
+  <% if @schedule.end_at.present? %>
+    <%= @schedule.end_at.strftime("%Y/%m/%d") %>
+  <% end %>
+</p>
+
+<p>終日：
+  <% if @schedule.all_day %>
+    ○
+  <% end %>
+</p>
+
+<p>メモ：<%= @schedule.memo %></p>
+
+<%= link_to "一覧に戻る", schedules_path %>

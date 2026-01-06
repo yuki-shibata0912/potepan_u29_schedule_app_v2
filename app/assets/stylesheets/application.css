@@ -1,15 +1,108 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
  */
+
+/* ===== 全体 ===== */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f7faf8;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1 {
+  color: #2e7d32;
+  margin-bottom: 12px;
+}
+
+/* ===== フォーム ===== */
+.form-area {
+  background: #ffffff;
+  border: 2px solid #c8e6c9;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+  max-width: 520px;
+}
+
+.form-area input,
+.form-area textarea {
+  width: 100%;
+  padding: 6px 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-area input:focus,
+.form-area textarea:focus {
+  outline: none;
+  border-color: #2e7d32;
+}
+
+/* ===== 作成・更新ボタン（Ruby） ===== */
+input[type="submit"] {
+  background: #c62828;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background: #b71c1c;
+}
+
+/* ===== 予定カード ===== */
+.schedule {
+  background: #fff;
+  border-left: 4px solid #2e7d32;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+}
+
+/* ===== 編集・削除アクション ===== */
+.schedule-actions {
+    margin-top: 8px;
+}
+
+.schedule-actions a {
+  font-size: 0.9rem;
+  color: #2e7d32;
+  text-decoration: underline;
+  margin-right: 8px;
+}
+
+/* ===== 削除ボタン（見た目リンク） ===== */
+.delete-form {
+  display: inline;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 4px;
+  color: #c62828;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.delete-button:hover {
+  color: #b71c1c;
+}
+
+/* ===== フラッシュ ===== */
+.notice {
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.alert {
+  color: #c62828;
+  margin-bottom: 10px;
+}
